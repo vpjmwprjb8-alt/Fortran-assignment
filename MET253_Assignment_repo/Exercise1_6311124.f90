@@ -1,32 +1,35 @@
 !6311124
 PROGRAM EXAM_RESULTS
-   IMPLICIT NONE
-   INTEGER :: R              !R = RESULTS OF STUDENTS
-   INTEGER :: i
-   
-   DO i= 1,10
-   PRINT*, 'PLEASE ENTER RESULTS', R
-   READ*, R(i)
-   
+IMPLICIT NONE
+  INTEGER :: i
+  REAL, DIMENSION(10)::R     !R=RESULTS OF STUDENTS
+  CHARACTER(LEN=15)::A,B,C,F,DISTINCTION,CREDIT, PASS, FAIL
+ 
+ PRINT*,'PLEASE ENTER 10 RESULTS'
+  
+   DO i=1,10
+    READ*, R(i)
    END DO
    
-   PRINT*,'PLEASE ENTER RESULT'
+ DO i=1,10
+   PRINT*,'____________________________________________________'
    
-  IF ((R>= 80).AND.(R<=100)) THEN
-    PRINT*, 'A'
-  ELSE IF ((R>=60).AND.(R<=79)) THEN
-    PRINT*, 'B'
-  ELSE IF ((R>=40).AND.(R<=59)) THEN
-    PRINT*, 'C'
-  ELSE 
-    PRINT*, 'F'
-  ELSE
-    
-  END IF  
+   IF ((R(i)>=80.00).AND.(R(i)<=100.00)) THEN
+    PRINT*,'A',R(i), '  ','DISTINCTION'
+  
+   ELSE IF ((R(i)>=60.00).AND.(R(i)<=79.00)) THEN
+    PRINT*,'B',R(i),'  ','CREDIT'
    
-  DO R(i)
-  
-  END DO
-  
-  
+   ELSE IF ((R(i)>=40.00).AND.(R(i)<=59.00)) THEN
+    PRINT*,'C',R(i),'  ','PASS'
+   
+   ELSE IF ((R(i)>=0.00).AND.(R(i)<=39.99)) THEN
+    PRINT*,'F',R(i),'  ','FAIL'
+   
+   ELSE 
+    PRINT*,'ERROR:  INVALID SCORE' 
+   END IF
+   
+  END DO   
+   PRINT*,'_______________________________________________________'
 END PROGRAM EXAM_RESULTS
